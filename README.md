@@ -57,3 +57,21 @@ Now just run the start script to compile and run the ui
 ```
 npm start
 ```
+
+## Troubleshooting 
+
+### When trying to start there is an error complaining about not being able to find webdrivers etc....
+You need to install the selenium web drivers
+```
+npm install @types/selenium-webdriver@2.53.36 --save-dev
+npm start
+```
+
+# Useful Scripts 
+
+## Unset Proxies 
+```
+npm config rm proxy
+npm config rm https-proxy
+
+```
