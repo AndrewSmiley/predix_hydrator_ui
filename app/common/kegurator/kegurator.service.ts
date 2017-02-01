@@ -17,7 +17,11 @@ export class KeguratorService {
     getKegVolume(): number {
         return 34;
     }
-
+    getOverview(): Observable<any> {
+        return this.http.post(this.kegURL + '/v1/dt/overview/', {})
+                        .map(this.readData)
+                        .catch(this.handleError);
+    }
     startPour(size: string): Observable<any> {
          return this.http.post(this.kegURL + '/v1/start_pour/' + size + '/210040001' , {})
                         .map(this.readData)

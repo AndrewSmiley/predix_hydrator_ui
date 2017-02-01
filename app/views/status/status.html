@@ -4,20 +4,49 @@
         <div class="capacityWrapper">
             <h4>Keg Status</h4>
             
-            <canvas #gauge width="200" height="200" id="gauge">
+            <canvas style="position: relative; top: 5px;" #gauge width="200" height="200" id="gauge">
                 Your browser sucks
             </canvas>
-            <br>
-            <h4>{{temp}}&deg;F</h4>
+            <span>Optimal Mantenance</span>
+            <h4>7PM to 6AM</h4>
         </div>
         <div class="logWrapper">
-            <h4>User Log</h4>
+            <h4>Digital Thread Data</h4>
+            <div class="tile_row">
+                <div class="tile" style="background-color: #06AAD8">
+                    <div class="tile_title">Days Until Line Cleaning</div>
+                    <div class="tile_metric">{{overview.days_in_lines}}</div>
+                    <div class="tile_units">Days</div>
+                </div>
+                <div class="tile" style="background-color: #75B825">
+                    <div class="tile_title">Days Until Keg Refilling</div>
+                    <div class="tile_metric">{{overview.days_in_keg}}</div>
+                    <div class="tile_units">Days</div>
+                </div>
+            </div>
+            <div class="tile_row">
+                <div class="tile" style="background-color: #FFB800">
+                    <div class="tile_title">Days Until CO2 Refilling</div>
+                    <div class="tile_metric">{{overview.days_in_c02}}</div>
+                    <div class="tile_units">Days</div>
+                </div>
+                <div class="tile" style="background-color: #F37D42">
+                    <div class="tile_title">Keg Tempurature</div>
+                    <div class="tile_metric">{{temp}}&deg;</div>
+                    <div class="tile_units">Fahrenheit</div>
+                </div>
+            </div>
+            
+            
+          
+
+            <!--<h4>User Log</h4>
             <ul>
                 <li class="item" *ngFor="let entry of entries">
                     <div class="logEntry">
                         <div>
                             <img width="35px" src="app/assets/imgs/profile.png">
-                            <!--<img width="35px" src="https://oneidm.ge.com/ui/ImageController?sso=210040001">-->
+                            
                         </div>
                         <div style="text-align: left; margin-left: 10px;">
                             {{entry.name}}({{entry.user_id}})<br/>
@@ -28,12 +57,12 @@
                 </li>
                 <li class="item"></li>
                 
-            </ul>
+            </ul> -->
         </div>
         <div class="optionsWrapper">
             <div class="button" routerLink="/">Back</div>
             <div class="button" (click)="getVolume()">Update</div>
-            <div class="button">Reset</div>
+            <div class="button" routerLink="/credits">Credits</div>
         </div>
     </div>
 </div>

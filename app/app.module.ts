@@ -4,6 +4,7 @@ import { RouterModule, Routes} from '@angular/router';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { AppComponent }  from './app.component';
+import { CreditsComponent } from './views/credits/credits.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { SplashComponent } from './views/splash/splash.component';
 import { StatusComponent } from './views/status/status.component';
@@ -14,6 +15,7 @@ import { toastComponent } from './views/toast/toast.component';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
+  { path: 'credits', component: CreditsComponent},
   { path: 'select', component: PourSelectComponent},
   { path: 'status', component: StatusComponent},
   { path: 'progress', component: PourProgressComponent},
@@ -28,6 +30,7 @@ const appRoutes: Routes = [
                   JsonpModule,
                   RouterModule.forRoot(appRoutes, { useHash: true })],
   declarations: [ AppComponent,
+                  CreditsComponent, 
                   PageNotFoundComponent,
                   PourProgressComponent,
                   PourSelectComponent,

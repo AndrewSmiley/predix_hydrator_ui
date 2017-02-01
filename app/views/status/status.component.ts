@@ -16,7 +16,12 @@ export class StatusComponent implements AfterViewInit {
     ounces: number = 345;
     temp: number = 35;
     fullness: number = 100;
-    
+    overview: any = {
+        "days_in_lines": 5,
+        "days_in_keg": 5,
+        "result": "true",
+        "days_in_c02": 5
+    };
     entries: LogEntry [] = [{
             status: 'complete',
             timestamp: 12345675,
@@ -31,6 +36,7 @@ export class StatusComponent implements AfterViewInit {
      ngAfterViewInit() {
         this.entries = this.kegService.getLogEntries();
         this.getStatus();
+        this.getOverview();
     }
 
     getStatus() {
@@ -45,6 +51,13 @@ export class StatusComponent implements AfterViewInit {
                     any => { console.info('error'); });
     }
 
+    getOverview() {
+        this.kegService.getOverview().subscribe(
+            body => {this.overview = body; },
+            error => {console.info(error); }
+        );
+    }
+
     renderGauge() {
         let x = 90;
         let y = 90;
@@ -54,11 +67,11 @@ export class StatusComponent implements AfterViewInit {
         let radians = degrees * Math.PI / 180;
         if (this.gauge) {
             let context:  CanvasRenderingContext2D = this.gauge.nativeElement.getContext('2d');
-            context.fillStyle = 'green';
+            context.fillStyle = '#75B825';
             context.beginPath();
                context.arc(x, y , radius, 0, radians, false); // outer (filled)
            context.lineWidth = 30;
-           context.strokeStyle = 'green';
+           context.strokeStyle = '#75B825';
            context.stroke();
 
            context.beginPath();
