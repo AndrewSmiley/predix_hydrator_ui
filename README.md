@@ -45,4 +45,15 @@ git clone git@github.com:azzmodious/predix_hydrator_ui.git
 git clone 
 npm install
 ```
-### 
+### Configure
+You need to open up the app/common/kegurator/kegurator.service.ts and change the port to match the one being used for the rest api
+
+```
+private kegURL = 'http://localhost:1337';
+```
+
+### Run 
+Now just run the start script to compile and run the ui 
+```
+npm start
+```
