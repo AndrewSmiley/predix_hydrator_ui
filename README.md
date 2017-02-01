@@ -42,7 +42,6 @@ Make sure that all proxy settings have been REMOVED
 
 ```
 git clone git@github.com:azzmodious/predix_hydrator_ui.git
-git clone 
 npm install
 ```
 ### Configure
@@ -53,7 +52,8 @@ private kegURL = 'http://localhost:1337';
 ```
 
 ### Run 
-Now just run the start script to compile and run the ui 
+Now just run the start script to compile and run the ui. 
+MAKE SURE THE KEGURATOR REST API IS RUNNING FIRST
 ```
 npm start
 ```
