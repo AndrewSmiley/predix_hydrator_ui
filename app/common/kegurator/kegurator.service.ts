@@ -1,0 +1,89 @@
+import { Injectable } from '@angular/core';
+
+import { LogEntry } from '../../views/status/logEntry';
+
+import { Http, Response } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
+
+
+@Injectable()
+export class KeguratorService {
+    private kegURL = 'http://localhost:1337';
+
+    constructor (private http: Http) {}
+
+    getKegVolume(): number {
+        return 34;
+    }
+
+    startPour(size: string): Observable<any> {
+         return this.http.post(this.kegURL + '/v1/start_pour/' + size + '/210040001' , {})
+                        .map(this.readData)
+                        .catch(this.handleError);
+    }
+
+    stopPour(): Observable<any> {
+        return this.http.post(this.kegURL + '/v1/stop_pour/', {})
+                        .map(this.readData)
+                        .catch(this.handleError);
+    }
+
+    getVolume(): Observable<any> {
+        return this.http.post(this.kegURL + '/v1/system_info', {})
+                    .map(this.readData)
+                    .catch(this.handleError);
+    }
+    handleError(error: Response | any) {
+        console.log(error);
+        return Observable.throw(error);
+    }
+
+    readData(res: Response) {
+        // console.info("reading data");
+        let body = res.json();
+        // console.info("data:"+JSON.stringify(body));
+        return body; // || { result: 21 };
+    }
+
+    getPour(): Observable<any> {
+        return this.http.post(this.kegURL + '/v1/pour_status/1/', {})
+                .map(response => {
+                    let body = response.json();
+                    return body;
+                })
+                .catch(this.handleError);
+    }
+
+    getTempurature(): number {
+        return 32;
+    }
+
+    getOuncesDispenced(): number {
+        return 66;
+    }
+
+    getLogEntries(): LogEntry[] {
+        let logs: LogEntry [] = [{
+             status: 'complete',
+            timestamp: 12345675,
+            name: 'Max Randolph',
+            user_id: '210040001',
+            pour_id: 1
+        },
+        {
+            status: 'complete',
+            timestamp: 12345675,
+            name: 'Max Randolph',
+            user_id: '210040001',
+            pour_id: 1
+        }];
+
+        return logs;
+    }
+
+    pollPourStatus(): number {
+        return 80;
+    }
+}

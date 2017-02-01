@@ -1,0 +1,39 @@
+<ng-content></ng-content>
+<div id="status">
+    <div class="statusWrapper">
+        <div class="capacityWrapper">
+            <h4>Keg Status</h4>
+            
+            <canvas #gauge width="200" height="200" id="gauge">
+                Your browser sucks
+            </canvas>
+            <br>
+            <h4>{{temp}}&deg;F</h4>
+        </div>
+        <div class="logWrapper">
+            <h4>User Log</h4>
+            <ul>
+                <li class="item" *ngFor="let entry of entries">
+                    <div class="logEntry">
+                        <div>
+                            <img width="35px" src="app/assets/imgs/profile.png">
+                            <!--<img width="35px" src="https://oneidm.ge.com/ui/ImageController?sso=210040001">-->
+                        </div>
+                        <div style="text-align: left; margin-left: 10px;">
+                            {{entry.name}}({{entry.user_id}})<br/>
+                            <span class="subtext">{{entry.timestamp}}</span><br/>
+                            <span class="subtext">{{entry.pour_id}} oz Pour</span><br/>
+                        </div>
+                    </div>
+                </li>
+                <li class="item"></li>
+                
+            </ul>
+        </div>
+        <div class="optionsWrapper">
+            <div class="button" routerLink="/">Back</div>
+            <div class="button" (click)="getVolume()">Update</div>
+            <div class="button">Reset</div>
+        </div>
+    </div>
+</div>

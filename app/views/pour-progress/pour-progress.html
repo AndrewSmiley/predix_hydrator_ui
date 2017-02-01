@@ -1,0 +1,36 @@
+<ng-content></ng-content>
+<div id="pour-progress"  class="container-fluid">
+   
+    
+    <div style="display: flex; margin-top: 60px;">
+        <div style="width: 33%; ">
+            <div class="fullness">
+                {{fullnessPercentage}}
+            </div>
+        </div>
+        <div style="width: 33%;">
+            <div class="meter" (click)='mockStatus()'>
+                <div class="tic" [ngClass]="{'blank_tic': 100 - percent > 10}"></div>
+                <div class="tic" [ngClass]="{'blank_tic': 100 - percent > 20}"></div>
+                <div class="tic" [ngClass]="{'blank_tic': 100 - percent > 40}"></div>
+                <div class="tic" [ngClass]="{'blank_tic': 100 - percent > 60}"></div>
+                <div class="tic" [ngClass]="{'blank_tic': 100 - percent > 80}" ></div>
+            </div>
+        </div>
+        <div style="width: 33%; ">
+            <div class="pourSelect">
+               <div class="stopButton" (click)="stopPour()">
+                   <span style="position: relative; top: 40px;">Stop!</span>
+               </div>
+           </div>
+        </div>
+    </div>
+    <div style="display: flex; margin-top: 20px;">
+        <div style="width: 33%"></div>
+        <div style="width: 33%; text-align: center">
+           <div class="statusText" routerLink="/progress">{{status}}</div>
+        </div>
+        <div style="width: 33%"></div>
+    </div>
+</div>
+
