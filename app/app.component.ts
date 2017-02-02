@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { KeguratorService } from 'app/common/kegurator/kegurator.service';
+import { KeguratorService } from './common/kegurator/kegurator.service';
 
 @Component({
   moduleId: module.id,
