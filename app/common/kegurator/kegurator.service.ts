@@ -11,34 +11,30 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class KeguratorService {
     private kegURL = 'http://localhost:1337';
-
+    public pourID = '2';
     constructor (private http: Http) {}
 
     getKegVolume(): number {
         return 34;
     }
     getOverview(): Observable<any> {
-        //return this.http.post(this.kegURL + '/v1/dt/overview/', {})
         return this.http.get(this.kegURL + '/v1/dt/overview/')
                         .map(this.readData)
                         .catch(this.handleError);
     }
     startPour(size: string): Observable<any> {
-        //return this.http.post(this.kegURL + '/v1/start_pour/' + size + '/210040001' , {})
         return this.http.get(this.kegURL + '/v1/start_pour/' + size + '/210040001')
                         .map(this.readData)
                         .catch(this.handleError);
     }
 
     stopPour(): Observable<any> {
-        //return this.http.post(this.kegURL + '/v1/stop_pour/', {})
         return this.http.get(this.kegURL + '/v1/stop_pour/')
                         .map(this.readData)
                         .catch(this.handleError);
     }
 
     getVolume(): Observable<any> {
-        //return this.http.post(this.kegURL + '/v1/system_info', {})
         return this.http.get(this.kegURL + '/v1/system_info')
                     .map(this.readData)
                     .catch(this.handleError);
@@ -49,14 +45,12 @@ export class KeguratorService {
     }
 
     readData(res: Response) {
-        // console.info("reading data");
         let body = res.json();
-        // console.info("data:"+JSON.stringify(body));
-        return body; // || { result: 21 };
+        return body;
     }
 
     getPour(pour_id: string): Observable<any> {
-        return this.http.get(this.kegURL + '/v1/pour_status/'+pour_id+'/')
+        return this.http.get(this.kegURL + '/v1/pour_status/' + pour_id + '/')
                 .map(response => {
                     let body = response.json();
                     return body;

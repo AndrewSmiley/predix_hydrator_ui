@@ -7,7 +7,7 @@ import { KeguratorService } from '../../common/kegurator/kegurator.service';
     selector: 'pour-select',
     templateUrl: './pour-select.html',
     styleUrls: ['./pour-select.less'],
-    providers: [KeguratorService],
+    //providers: [KeguratorService],
     encapsulation: ViewEncapsulation.None
 })
 
@@ -28,7 +28,7 @@ export class PourSelectComponent {
             this.kegService.startPour(this.selectedOunces)
                 .subscribe(
                     body => {
-                        
+                        this.kegService.pourID = body.pour_id;
                         this.router.navigate(['/progress']);
                     },
                     error => {

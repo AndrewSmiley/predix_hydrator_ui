@@ -11,7 +11,6 @@ import { StatusComponent } from './views/status/status.component';
 import { PourSelectComponent } from './views/pour-select/pour-select.component';
 import { PourProgressComponent } from './views/pour-progress/pour-progress.component';
 import { toastComponent } from './views/toast/toast.component';
-//import { ChartsModule } from 'ng2-charts';
 
 const appRoutes: Routes = [
   { path: '', component: SplashComponent },
@@ -30,7 +29,7 @@ const appRoutes: Routes = [
                   JsonpModule,
                   RouterModule.forRoot(appRoutes, { useHash: true })],
   declarations: [ AppComponent,
-                  CreditsComponent, 
+                  CreditsComponent,
                   PageNotFoundComponent,
                   PourProgressComponent,
                   PourSelectComponent,

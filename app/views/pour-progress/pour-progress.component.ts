@@ -7,7 +7,7 @@ import { KeguratorService } from '../../common/kegurator/kegurator.service';
     selector: 'pour-progress',
     templateUrl: './pour-progress.html',
     styleUrls: ['./pour-progress.less'],
-    providers: [KeguratorService],
+    //providers: [KeguratorService],
     encapsulation: ViewEncapsulation.None
 })
 
@@ -16,7 +16,6 @@ export class PourProgressComponent implements AfterViewInit {
     status = 'Pouring';
     percent = 0;
     intervalID: any;
-    pourID = '0';
 
     constructor(
         private router: Router,
@@ -55,7 +54,7 @@ export class PourProgressComponent implements AfterViewInit {
     formatStatus() {
         console.info(this.kegService.pollPourStatus());
 
-        this.kegService.getPour(this.pourID).subscribe(body => {
+        this.kegService.getPour(this.kegService.pourID).subscribe(body => {
                         this.percent = body.percentage;
                         if (body.status === 'complete') {
                             this.status = "Done :)";
