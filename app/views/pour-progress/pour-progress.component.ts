@@ -16,6 +16,7 @@ export class PourProgressComponent implements AfterViewInit {
     status = 'Pouring';
     percent = 0;
     intervalID: any;
+    pourID = '0';
 
     constructor(
         private router: Router,
@@ -52,11 +53,9 @@ export class PourProgressComponent implements AfterViewInit {
     }
 
     formatStatus() {
-        //this.percent += 4;
-
         console.info(this.kegService.pollPourStatus());
 
-        this.kegService.getPour().subscribe(body => {
+        this.kegService.getPour(this.pourID).subscribe(body => {
                         this.percent = body.percentage;
                         if (body.status === 'complete') {
                             this.status = "Done :)";
@@ -64,14 +63,7 @@ export class PourProgressComponent implements AfterViewInit {
                             setTimeout(() => { this.goToToast(); }, 1000);
                         }
                     },
-                    any => { console.info('error'); });;
-
-        /*if (this.percent > 100) {
-            this.percent = 100;
-            this.status = "Done :)";
-            clearInterval(this.intervalID);
-            setTimeout(() => { this.goToToast(); }, 1000);
-        }*/
+                    any => { console.info('error'); });
 
         this.fullnessPercentage = this.percent + '%';
     }

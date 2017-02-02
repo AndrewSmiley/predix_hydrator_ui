@@ -18,24 +18,28 @@ export class KeguratorService {
         return 34;
     }
     getOverview(): Observable<any> {
-        return this.http.post(this.kegURL + '/v1/dt/overview/', {})
+        //return this.http.post(this.kegURL + '/v1/dt/overview/', {})
+        return this.http.get(this.kegURL + '/v1/dt/overview/')
                         .map(this.readData)
                         .catch(this.handleError);
     }
     startPour(size: string): Observable<any> {
-         return this.http.post(this.kegURL + '/v1/start_pour/' + size + '/210040001' , {})
+        //return this.http.post(this.kegURL + '/v1/start_pour/' + size + '/210040001' , {})
+        return this.http.get(this.kegURL + '/v1/start_pour/' + size + '/210040001')
                         .map(this.readData)
                         .catch(this.handleError);
     }
 
     stopPour(): Observable<any> {
-        return this.http.post(this.kegURL + '/v1/stop_pour/', {})
+        //return this.http.post(this.kegURL + '/v1/stop_pour/', {})
+        return this.http.get(this.kegURL + '/v1/stop_pour/')
                         .map(this.readData)
                         .catch(this.handleError);
     }
 
     getVolume(): Observable<any> {
-        return this.http.post(this.kegURL + '/v1/system_info', {})
+        //return this.http.post(this.kegURL + '/v1/system_info', {})
+        return this.http.get(this.kegURL + '/v1/system_info')
                     .map(this.readData)
                     .catch(this.handleError);
     }
@@ -51,8 +55,8 @@ export class KeguratorService {
         return body; // || { result: 21 };
     }
 
-    getPour(): Observable<any> {
-        return this.http.post(this.kegURL + '/v1/pour_status/1/', {})
+    getPour(pour_id: string): Observable<any> {
+        return this.http.get(this.kegURL + '/v1/pour_status/'+pour_id+'/')
                 .map(response => {
                     let body = response.json();
                     return body;
