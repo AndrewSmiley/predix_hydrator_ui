@@ -1,12 +1,12 @@
 <ng-content></ng-content>
 <div id="pour-select" class="container-fluid">
-    
+
     <div style="display: flex; margin-top: 40px;">
         <div style="width: 33%">
-           <div (click)="selectSize('8')" class="pourSelect">
-               <img src="app/assets/imgs/beer8oz.png">
-               <div class="pourSelectLabel">8oz</div>
-               <div *ngIf="selectedOunces == '8'" class="selectorBar"></div>
+           <div (click)="selectSize('2')" class="pourSelect">
+               <img src="app/assets/imgs/beer2oz.png">
+               <div class="pourSelectLabel">2oz</div>
+               <div *ngIf="selectedOunces == '2'" class="selectorBar"></div>
            </div>
         </div>
         <div style="width: 33%">
@@ -28,10 +28,10 @@
         <div style="width: 33%"></div>
         <div style="width: 33%">
            <div [ngClass]="{'goButtonActive': selectedOunces != 0}" class="goButton" (click)="startPour()">Go!</div>
-          
+
         </div>
         <div style="width: 33%"></div>
     </div>
-    
+
 
 </div>
