@@ -67,6 +67,6 @@ export class PourProgressComponent implements AfterViewInit {
         this.fullnessPercentage = this.percent + '%';
     }
     mockStatus() {
-        this.intervalID = setInterval(() => { this.formatStatus(); }, 250);
+        this.intervalID = setInterval(() => { this.formatStatus(); }, 500);
     }
 }
