@@ -10,7 +10,7 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class KeguratorService {
-    private kegURL = 'http://localhost:1337';
+    private kegURL = 'http://localhost:8000';
     public pourID = '2';
     constructor (private http: Http) {}
 
