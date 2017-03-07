@@ -20,8 +20,8 @@ export class StatusComponent implements AfterViewInit {
         "days_in_lines": 5,
         "days_in_keg": 5,
         "result": "true",
-        "days_in_c02": 5,
-        "keg_percentage": 5
+        "days_in_c02": 5
+
 
     };
     entries: LogEntry [] = [{
