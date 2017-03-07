@@ -2,8 +2,8 @@
 <div id="status">
     <div class="statusWrapper">
         <div class="capacityWrapper">
-            <h4>Keg Status</h4>
-            
+            <h4>Keg Percentage</h4>
+
             <canvas style="position: relative; top: 5px;" #gauge width="200" height="200" id="gauge">
                 Your browser sucks
             </canvas>
@@ -11,7 +11,7 @@
             <h4>7PM to 6AM</h4>
         </div>
         <div class="logWrapper">
-            <h4>Digital Thread Data</h4>
+            <h4>Digital Twin Data</h4>
             <div class="tile_row">
                 <div class="tile" style="background-color: #06AAD8">
                     <div class="tile_title">Days Until Line Cleaning</div>
@@ -19,7 +19,7 @@
                     <div class="tile_units">Days</div>
                 </div>
                 <div class="tile" style="background-color: #75B825">
-                    <div class="tile_title">Days Until Keg Refilling</div>
+                    <div class="tile_title">Days Until Keg Empty</div>
                     <div class="tile_metric">{{overview.days_in_keg}}</div>
                     <div class="tile_units">Days</div>
                 </div>
@@ -36,7 +36,7 @@
                     <div class="tile_units">Fahrenheit</div>
                 </div>
             </div>
-            
+
         </div>
         <div class="optionsWrapper">
             <div class="button" routerLink="/">Back</div>
