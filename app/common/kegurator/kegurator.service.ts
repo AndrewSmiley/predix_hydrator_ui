@@ -39,6 +39,13 @@ export class KeguratorService {
                     .map(this.readData)
                     .catch(this.handleError);
     }
+
+    getOmt(): Observable<any> {
+    return this.http.get(this.kegURL + '/v1/dt/omt/')
+      .map(this.readData)
+      .catch(this.handleError);
+    }
+
     handleError(error: Response | any) {
         console.log(error);
         return Observable.throw(error);

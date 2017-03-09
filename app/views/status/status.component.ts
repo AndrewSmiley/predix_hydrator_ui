@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { LogEntry } from './logEntry';
 import { KeguratorService } from '../../common/kegurator/kegurator.service';
+import {error} from "util";
 
 @Component({
     moduleId: module.id,
@@ -24,6 +25,11 @@ export class StatusComponent implements AfterViewInit {
 
 
     };
+    omt: any={
+      "omt_start": "6PM",
+      "omt_end": "12AM",
+      "result": "true"
+    };
     entries: LogEntry [] = [{
             status: 'complete',
             timestamp: 12345675,
@@ -39,8 +45,10 @@ export class StatusComponent implements AfterViewInit {
         this.entries = this.kegService.getLogEntries();
         this.getStatus();
         this.getOverview();
+        this.getOmt();
         console.log("ng After View init")
-       console.log(this.overview)
+       console.log(this.omt.omt_start)
+       console.log(this.omt.omt_end)
     }
 
     getStatus() {
@@ -54,7 +62,9 @@ export class StatusComponent implements AfterViewInit {
                     },
                     any => { console.info('error'); });
     }
-
+    getOmt(){
+      this.kegService.getOmt().subscribe(body => {this.omt = body}, error => {console.info(error)})
+    }
     getOverview() {
         this.kegService.getOverview().subscribe(
             body => {this.overview = body; },
