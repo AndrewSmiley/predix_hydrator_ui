@@ -29,7 +29,7 @@ export class PourSelectComponent {
                 .subscribe(
                     body => {
                         this.kegService.pourID = body.pour_id;
-                        this.router.navigate(['/progress']);
+                        this.router.navigate(['toast']);
                     },
                     error => {
 
